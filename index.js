@@ -143,14 +143,25 @@
     }, delay);
   }
 
-  function simulationSelector(value) {
-    let element = document.getElementById(value) || 
-                  document.querySelector(value) || 
-                  document.querySelector(`.${value}`) || 
-                  document.evaluate(value, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+function simulationSelector(value) {
+    let element;
+    // Check if the value is an XPath expression
+    if (value.startsWith('/') || value.startsWith('(')) {
+        element = document.evaluate(value, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    } else {
+        // Try to find the element by ID
+        element = document.getElementById(value) ||
+                  // Try to find the element by class or any CSS selector
+                  document.querySelector(value) ||
+                  // Try to find the element by class (alternative format)
+                  document.querySelector(`.${value}`);
+    }
 
     return element;
-  }
+}
+
+
+
 
   global.simulijs = {
     simulateClick,
