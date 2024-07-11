@@ -6,6 +6,7 @@ const delay = (time) => new Promise((resolve) => setTimeout(resolve, time));
 const BASE_URL = `file://${__dirname}`;
 const CLICK_TEST_PATH = '/click-test.html';
 const KEYPRESS_TEST_PATH = '/keypress-test.html';
+const MOUSEENTER_TEST_PATH = '/mouseenter-test.html';
 const DELAY_TIME = 3000;
 
 (async () => {
@@ -31,12 +32,22 @@ const DELAY_TIME = 3000;
     const inputValue = await page.$eval('#testInput', el => el.value);
     console.log('Keypress Result:', keypressResult);
     console.log('Input Value:', inputValue);
-    console.log('Keypress event test completed:', keypressResult === 'Key "abcd" was pressed!' && inputValue === 'abcd');
+    console.log('Keypress event test completed:', keypressResult === 'Key "a" was pressed!' && inputValue === 'a');
+  };
+
+  // Function to test mouse enter event
+  const testMouseEnterEvent = async () => {
+    await page.goto(`${BASE_URL}${MOUSEENTER_TEST_PATH}`);
+    await delay(DELAY_TIME);
+    const mouseenterResult = await page.$eval('#mouseenterResult', el => el.textContent);
+    console.log('Mouse Enter Result:', mouseenterResult);
+    console.log('Mouse enter event test completed:', mouseenterResult === 'Mouse entered the div!');
   };
 
   // Run tests
   await testClickEvent();
   await testKeypressEvent();
+  await testMouseEnterEvent();
 
   await browser.close();
 })();
