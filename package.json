@@ -4,7 +4,8 @@
   "description": "It helps to simulate events on a webpage",
   "main": "index.js",
   "scripts": {
-    "test": "node test-simulijs/test.js"
+    "test": "node test-simulijs/test.js",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
   },
   "homepage": "https://github.com/HrithikMani/mie-simulijs#readme",
   "devDependencies": {
-    "puppeteer": "^10.4.0"
+    "puppeteer": "^10.4.0",
+    "standard-version": "^9.5.0"
   }
 }

@@ -25,6 +25,19 @@ jobs:
     - name: Run tests
       run: npm test
 
+    - name: Bump version and generate changelog
+      run: npm run release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Push changes back to repository
+      run: |
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
+        git push --follow-tags origin prod
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Publish to npm
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
