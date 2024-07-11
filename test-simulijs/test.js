@@ -28,11 +28,9 @@ const DELAY_TIME = 3000;
   const testKeypressEvent = async () => {
     await page.goto(`${BASE_URL}${KEYPRESS_TEST_PATH}`);
     await delay(DELAY_TIME);
-    const keypressResult = await page.$eval('#keypressResult', el => el.textContent);
     const inputValue = await page.$eval('#testInput', el => el.value);
-    console.log('Keypress Result:', keypressResult);
     console.log('Input Value:', inputValue);
-    console.log('Keypress event test completed:', keypressResult === 'Key "abcd" was pressed!' && inputValue === 'abcd');
+    console.log('Keypress event test completed:',  inputValue === 'abcd');
   };
 
   // Function to test mouse enter event

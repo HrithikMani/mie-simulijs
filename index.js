@@ -9,16 +9,7 @@
   }
 
   function simulateKeyPress(element, key) {
-    const keydownEvent = new KeyboardEvent('keydown', {
-      key: key,
-      bubbles: true,
-      cancelable: true,
-      view: window
-    });
-    element.dispatchEvent(keydownEvent);
-
-    // Simulate input event to actually input the character
-    const inputEvent = new Event('input', {
+     const inputEvent = new Event('input', {
       bubbles: true,
       cancelable: true,
       view: window
