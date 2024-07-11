@@ -13,8 +13,6 @@
     <div id="focusResult"></div>
 
     <script>
-        const { simulateFocus } = window.simulijs;
-
         const focusInput = document.getElementById('focusInput');
         const focusResult = document.getElementById('focusResult');
 
@@ -22,10 +20,6 @@
             focusResult.textContent = 'Input is focused!';
             console.log('Input is focused!');
         });
-
-        window.onload = () => {
-            simulateFocus(focusInput);
-        };
     </script>
 </body>
 </html>

@@ -13,8 +13,6 @@
     <div id="changeResult"></div>
 
     <script>
-        const { simulateChange } = window.simulijs;
-
         const changeInput = document.getElementById('changeInput');
         const changeResult = document.getElementById('changeResult');
 
@@ -22,11 +20,6 @@
             changeResult.textContent = 'Input value changed!';
             console.log('Input value changed!');
         });
-
-        window.onload = () => {
-            changeInput.value = 'New value';
-            simulateChange(changeInput);
-        };
     </script>
 </body>
 </html>

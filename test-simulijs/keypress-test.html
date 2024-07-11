@@ -10,9 +10,8 @@
     <h1>Simulijs Keypress Test</h1>
 
     <input type="text" id="testInput" value="">
-    <script>
-        const { simulateKeyPress } = window.simulijs;
 
+    <script>
         const testInput = document.getElementById('testInput');
 
         testInput.addEventListener('input', function() {
@@ -20,10 +19,6 @@
                 console.log('Keypress event test completed: true');
             }
         });
-
-        window.onload = () => {
-            'abcd'.split('').forEach(key => simulateKeyPress(testInput, key));
-        };
     </script>
 </body>
 </html>

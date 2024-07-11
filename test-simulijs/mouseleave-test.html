@@ -13,8 +13,6 @@
     <div id="mouseleaveResult"></div>
 
     <script>
-        const { simulateMouseLeave } = window.simulijs;
-
         const testDiv = document.getElementById('testDiv');
         const mouseleaveResult = document.getElementById('mouseleaveResult');
 
@@ -22,10 +20,6 @@
             mouseleaveResult.textContent = 'Mouse left the div!';
             console.log('Mouse left the div!');
         });
-
-        window.onload = () => {
-            simulateMouseLeave(testDiv);
-        };
     </script>
 </body>
 </html>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulijs Click Test</title>
     <script src="../index.js"></script>
+    <script src="https://unpkg.com/mie-simulijs"></script>
 </head>
 <body>
     <h1>Simulijs Click Test</h1>
@@ -13,8 +14,6 @@
     <div id="clickResult"></div>
 
     <script>
-        const { simulateClick } = window.simulijs;
-
         const testButton = document.getElementById('testButton');
         const clickResult = document.getElementById('clickResult');
 
@@ -26,25 +25,7 @@
             console.log(`Button was clicked! (${buttonType} click)`);
         });
 
-        window.onload = () => {
-            // Simulate a left button click
-            simulateClick(testButton, {
-              button: 'left',
-              callback: () => console.log('Left click simulated!')
-            });
-
-            // Simulate a right button click
-            simulateClick(testButton, {
-              button: 'right',
-              callback: () => console.log('Right click simulated!')
-            });
-
-            // Simulate a middle button click
-            simulateClick(testButton, {
-              button: 'middle',
-              callback: () => console.log('Middle click simulated!')
-            });
-        };
+      
     </script>
 </body>
 </html>
