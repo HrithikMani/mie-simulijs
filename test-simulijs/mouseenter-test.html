@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulijs Mouse Enter Test</title>
+    <script src="../index.js"></script>
+</head>
+<body>
+    <h1>Simulijs Mouse Enter Test</h1>
+
+    <div id="testDiv" style="width: 100px; height: 100px; background-color: lightblue;">Hover over me</div>
+    <div id="mouseenterResult"></div>
+
+    <script>
+        // Ensure simulijs is accessible
+        const { simulateMouseEnter } = window.simulijs;
+
+        // Select the element
+        const testDiv = document.getElementById('testDiv');
+        const mouseenterResult = document.getElementById('mouseenterResult');
+
+        // Add event listener to log event
+        testDiv.addEventListener('mouseenter', () => {
+            mouseenterResult.textContent = 'Mouse entered the div!';
+            console.log('Mouse entered the div!');
+        });
+
+        // Simulate events using simulijs
+        window.onload = () => {
+            // Simulate a mouse enter
+            simulateMouseEnter(testDiv);
+        };
+    </script>
+</body>
+</html>
