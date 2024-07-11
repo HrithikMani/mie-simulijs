@@ -2,14 +2,6 @@
 
 **mie-simulijs** is a JavaScript library that helps simulate events on a webpage. It can simulate mouse and keyboard events programmatically.
 
-## Installation
-
-You can install the package using npm:
-
-```sh
-npm install mie-simulijs
-```
-
 ## Usage
 Here is how you can use the mie-simulijs library to simulate click and keypress events.
 
