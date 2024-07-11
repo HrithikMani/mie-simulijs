@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulijs Keypress Test</title>
+    <script src="../index.js"></script>
+</head>
+<body>
+    <h1>Simulijs Keypress Test</h1>
+
+    <input type="text" id="testInput" placeholder="Type something here">
+    <div id="keypressResult"></div>
+
+    <script>
+        // Ensure simulijs is accessible
+        const { simulateKeyPress } = window.simulijs;
+
+        // Select the element
+        const testInput = document.getElementById('testInput');
+        const keypressResult = document.getElementById('keypressResult');
+
+        // Add event listener to log event
+        testInput.addEventListener('keydown', (event) => {
+            keypressResult.textContent = `Key "${event.key}" was pressed!`;
+            console.log(`Key "${event.key}" was pressed!`);
+        });
+
+        // Simulate events using simulijs
+        window.onload = () => {
+            // Simulate a key press
+            simulateKeyPress(testInput, 'abcd');
+        };
+    </script>
+</body>
+</html>

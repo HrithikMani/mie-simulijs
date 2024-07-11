@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulijs Click Test</title>
+    <script src="../index.js"></script>
+</head>
+<body>
+    <h1>Simulijs Click Test</h1>
+
+    <button id="testButton">Click me</button>
+    <div id="clickResult"></div>
+
+    <script>
+        // Ensure simulijs is accessible
+        const { simulateClick } = window.simulijs;
+
+        // Select the element
+        const testButton = document.getElementById('testButton');
+        const clickResult = document.getElementById('clickResult');
+
+        // Add event listener to log event
+        testButton.addEventListener('click', () => {
+            clickResult.textContent = 'Button was clicked!';
+            console.log('Button was clicked!');
+        });
+
+        // Simulate events using simulijs
+        window.onload = () => {
+            // Simulate a button click
+            simulateClick(testButton);
+        };
+    </script>
+</body>
+</html>

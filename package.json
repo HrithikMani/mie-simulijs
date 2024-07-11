@@ -1,0 +1,27 @@
+{
+  "name": "simulijs",
+  "version": "1.1.0",
+  "description": "It helps to simulate events on a webpage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HrithikMani/simulijs.git"
+  },
+  "keywords": [
+    "simulation",
+    "simulate",
+    "mouseEvent",
+    "Events",
+    "KeyboardEvent",
+    "Web simulation"
+  ],
+  "author": "Hrithik Mani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HrithikMani/simulijs/issues"
+  },
+  "homepage": "https://github.com/HrithikMani/simulijs#readme"
+}
