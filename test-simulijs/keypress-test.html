@@ -9,27 +9,20 @@
 <body>
     <h1>Simulijs Keypress Test</h1>
 
-    <input type="text" id="testInput" placeholder="Type something here">
-    <div id="keypressResult"></div>
-
+    <input type="text" id="testInput" value="">
     <script>
-        // Ensure simulijs is accessible
         const { simulateKeyPress } = window.simulijs;
 
-        // Select the element
         const testInput = document.getElementById('testInput');
-        const keypressResult = document.getElementById('keypressResult');
 
-        // Add event listener to log event
-        testInput.addEventListener('keydown', (event) => {
-            keypressResult.textContent = `Key "${event.key}" was pressed!`;
-            console.log(`Key "${event.key}" was pressed!`);
+        testInput.addEventListener('input', function() {
+            if (this.value === 'abcd') {
+                console.log('Keypress event test completed: true');
+            }
         });
 
-        // Simulate events using simulijs
         window.onload = () => {
-            // Simulate a key press
-            simulateKeyPress(testInput, 'abcd');
+            'abcd'.split('').forEach(key => simulateKeyPress(testInput, key));
         };
     </script>
 </body>

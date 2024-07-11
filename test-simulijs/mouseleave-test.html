@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulijs Mouseleave Test</title>
+    <script src="../index.js"></script>
+</head>
+<body>
+    <h1>Simulijs Mouseleave Test</h1>
+
+    <div id="testDiv" style="width: 100px; height: 100px; background: lightgrey;"></div>
+    <div id="mouseleaveResult"></div>
+
+    <script>
+        const { simulateMouseLeave } = window.simulijs;
+
+        const testDiv = document.getElementById('testDiv');
+        const mouseleaveResult = document.getElementById('mouseleaveResult');
+
+        testDiv.addEventListener('mouseleave', function() {
+            mouseleaveResult.textContent = 'Mouse left the div!';
+            console.log('Mouse left the div!');
+        });
+
+        window.onload = () => {
+            simulateMouseLeave(testDiv);
+        };
+    </script>
+</body>
+</html>
