@@ -48,20 +48,35 @@ const DELAY_TIME = 3000;
       const { simulateClick } = window.simulijs;
       simulateClick(document.getElementById('testButton'), { button: 'middle', callback: () => console.log('Middle click simulated!') });
     });
+    await delay(DELAY_TIME);
+    clickResult = await page.$eval('#clickResult', el => el.textContent);
+    console.log('Click Result:', clickResult);
+    console.log('Middle Click event test completed:', clickResult.includes('Middle click'));
   };
 
   // Function to test keypress event
   const testKeypressEvent = async () => {
     await page.goto(`${BASE_URL}${KEYPRESS_TEST_PATH}`);
     await delay(DELAY_TIME);
+    await page.evaluate(() => {
+      const { simulateKeyPress } = window.simulijs;
+      const testInput = document.getElementById('testInput');
+      'abcd'.split('').forEach(key => simulateKeyPress(testInput, key));
+    });
+    await delay(DELAY_TIME);
     const inputValue = await page.$eval('#testInput', el => el.value);
     console.log('Input Value:', inputValue);
-    console.log('Keypress event test completed:',  inputValue === 'abcd');
+    console.log('Keypress event test completed:', inputValue === 'abcd');
   };
 
   // Function to test mouse enter event
   const testMouseEnterEvent = async () => {
     await page.goto(`${BASE_URL}${MOUSEENTER_TEST_PATH}`);
+    await delay(DELAY_TIME);
+    await page.evaluate(() => {
+      const { simulateMouseEnter } = window.simulijs;
+      simulateMouseEnter(document.getElementById('testDiv'));
+    });
     await delay(DELAY_TIME);
     const mouseenterResult = await page.$eval('#mouseenterResult', el => el.textContent);
     console.log('Mouse Enter Result:', mouseenterResult);
@@ -72,6 +87,11 @@ const DELAY_TIME = 3000;
   const testFocusEvent = async () => {
     await page.goto(`${BASE_URL}${FOCUS_TEST_PATH}`);
     await delay(DELAY_TIME);
+    await page.evaluate(() => {
+      const { simulateFocus } = window.simulijs;
+      simulateFocus(document.getElementById('focusInput'));
+    });
+    await delay(DELAY_TIME);
     const focusResult = await page.$eval('#focusResult', el => el.textContent);
     console.log('Focus Result:', focusResult);
     console.log('Focus event test completed:', focusResult === 'Input is focused!');
@@ -80,6 +100,13 @@ const DELAY_TIME = 3000;
   // Function to test change event
   const testChangeEvent = async () => {
     await page.goto(`${BASE_URL}${CHANGE_TEST_PATH}`);
+    await delay(DELAY_TIME);
+    await page.evaluate(() => {
+      const { simulateChange } = window.simulijs;
+      const changeInput = document.getElementById('changeInput');
+      changeInput.value = 'New value';
+      simulateChange(changeInput);
+    });
     await delay(DELAY_TIME);
     const changeResult = await page.$eval('#changeResult', el => el.textContent);
     console.log('Change Result:', changeResult);
@@ -90,8 +117,11 @@ const DELAY_TIME = 3000;
   const testMouseLeaveEvent = async () => {
     await page.goto(`${BASE_URL}${MOUSELEAVE_TEST_PATH}`);
     await delay(DELAY_TIME);
-    await page.hover('#testDiv'); // Hover first to trigger mouseenter
-    await page.mouse.move(0, 0);  // Move the mouse away to trigger mouseleave
+    await page.evaluate(() => {
+      const { simulateMouseLeave } = window.simulijs;
+      simulateMouseLeave(document.getElementById('testDiv'));
+    });
+    await delay(DELAY_TIME);
     const mouseleaveResult = await page.$eval('#mouseleaveResult', el => el.textContent);
     console.log('Mouse Leave Result:', mouseleaveResult);
     console.log('Mouse leave event test completed:', mouseleaveResult === 'Mouse left the div!');

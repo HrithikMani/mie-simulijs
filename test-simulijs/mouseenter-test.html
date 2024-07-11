@@ -13,8 +13,6 @@
     <div id="mouseenterResult"></div>
 
     <script>
-        const { simulateMouseEnter } = window.simulijs;
-
         const testDiv = document.getElementById('testDiv');
         const mouseenterResult = document.getElementById('mouseenterResult');
 
@@ -22,10 +20,6 @@
             mouseenterResult.textContent = 'Mouse entered the div!';
             console.log('Mouse entered the div!');
         });
-
-        window.onload = () => {
-            simulateMouseEnter(testDiv);
-        };
     </script>
 </body>
 </html>
