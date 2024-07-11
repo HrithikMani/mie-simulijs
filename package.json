@@ -1,6 +1,6 @@
 {
   "name": "mie-simulijs",
-  "version": "1.1.1",
+  "version": "1.1.0",
   "description": "It helps to simulate events on a webpage",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,21 @@
     "mouseEvent",
     "Events",
     "KeyboardEvent",
-    "Web simulation"
+    "Web simulation",
+    "automation",
+    "test automation",
+    "event simulation",
+    "dom manipulation",
+    "frontend testing",
+    "ui testing",
+    "browser events",
+    "javascript events",
+    "user interaction",
+    "web testing",
+    "input events",
+    "click events",
+    "key events",
+    "ui automation"
   ],
   "author": "Hrithik Mani",
   "license": "ISC",
