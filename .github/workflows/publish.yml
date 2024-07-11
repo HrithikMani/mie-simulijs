@@ -25,6 +25,11 @@ jobs:
     - name: Run tests
       run: npm test
 
+    - name: Configure Git
+      run: |
+        git config --global user.email "hrithik.mani2000@gmail.com"
+        git config --global user.name "HrithikMani"
+
     - name: Bump version and generate changelog
       run: npm run release
       env:
@@ -32,8 +37,6 @@ jobs:
 
     - name: Push changes back to repository
       run: |
-        git config --global user.email "hrithik.mani2000@gmail.com"
-        git config --global user.name "HrithikMani"
         git push --follow-tags origin prod
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
