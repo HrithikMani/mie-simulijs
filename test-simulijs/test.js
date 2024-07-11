@@ -32,7 +32,7 @@ const DELAY_TIME = 3000;
     const inputValue = await page.$eval('#testInput', el => el.value);
     console.log('Keypress Result:', keypressResult);
     console.log('Input Value:', inputValue);
-    console.log('Keypress event test completed:', keypressResult === 'Key "a" was pressed!' && inputValue === 'a');
+    console.log('Keypress event test completed:', keypressResult === 'Key "abcd" was pressed!' && inputValue === 'abcd');
   };
 
   // Function to test mouse enter event
