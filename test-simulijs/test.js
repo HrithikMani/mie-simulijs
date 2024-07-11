@@ -22,9 +22,32 @@ const DELAY_TIME = 3000;
   const testClickEvent = async () => {
     await page.goto(`${BASE_URL}${CLICK_TEST_PATH}`);
     await delay(DELAY_TIME);
-    const clickResult = await page.$eval('#clickResult', el => el.textContent);
+
+    // Test left click
+    await page.evaluate(() => {
+      const { simulateClick } = window.simulijs;
+      simulateClick(document.getElementById('testButton'), { button: 'left', callback: () => console.log('Left click simulated!') });
+    });
+    await delay(DELAY_TIME);
+    let clickResult = await page.$eval('#clickResult', el => el.textContent);
     console.log('Click Result:', clickResult);
-    console.log('Click event test completed:', clickResult === 'Button was clicked!');
+    console.log('Left Click event test completed:', clickResult.includes('Left click'));
+
+    // Test right click
+    await page.evaluate(() => {
+      const { simulateClick } = window.simulijs;
+      simulateClick(document.getElementById('testButton'), { button: 'right', callback: () => console.log('Right click simulated!') });
+    });
+    await delay(DELAY_TIME);
+    clickResult = await page.$eval('#clickResult', el => el.textContent);
+    console.log('Click Result:', clickResult);
+    console.log('Right Click event test completed:', clickResult.includes('Right click'));
+
+    // Test middle click
+    await page.evaluate(() => {
+      const { simulateClick } = window.simulijs;
+      simulateClick(document.getElementById('testButton'), { button: 'middle', callback: () => console.log('Middle click simulated!') });
+    });
   };
 
   // Function to test keypress event

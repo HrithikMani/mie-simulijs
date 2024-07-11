@@ -18,13 +18,32 @@
         const testButton = document.getElementById('testButton');
         const clickResult = document.getElementById('clickResult');
 
-        testButton.addEventListener('click', () => {
-            clickResult.textContent = 'Button was clicked!';
-            console.log('Button was clicked!');
+        testButton.addEventListener('click', (event) => {
+            let buttonType = 'Left';
+            if (event.button === 1) buttonType = 'Middle';
+            if (event.button === 2) buttonType = 'Right';
+            clickResult.textContent = `Button was clicked! (${buttonType} click)`;
+            console.log(`Button was clicked! (${buttonType} click)`);
         });
 
         window.onload = () => {
-            simulateClick(testButton);
+            // Simulate a left button click
+            simulateClick(testButton, {
+              button: 'left',
+              callback: () => console.log('Left click simulated!')
+            });
+
+            // Simulate a right button click
+            simulateClick(testButton, {
+              button: 'right',
+              callback: () => console.log('Right click simulated!')
+            });
+
+            // Simulate a middle button click
+            simulateClick(testButton, {
+              button: 'middle',
+              callback: () => console.log('Middle click simulated!')
+            });
         };
     </script>
 </body>

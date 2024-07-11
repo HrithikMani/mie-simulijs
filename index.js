@@ -1,11 +1,31 @@
 (function(global) {
-  function simulateClick(element) {
+  function simulateClick(element, options = {}) {
+    const { button = 'left', callback } = options;
+    let buttonCode;
+
+    switch (button) {
+      case 'middle':
+        buttonCode = 1;
+        break;
+      case 'right':
+        buttonCode = 2;
+        break;
+      case 'left':
+      default:
+        buttonCode = 0;
+    }
+
     const event = new MouseEvent('click', {
       bubbles: true,
       cancelable: true,
-      view: window
+      view: window,
+      button: buttonCode
     });
     element.dispatchEvent(event);
+
+    if (typeof callback === 'function') {
+      callback();
+    }
   }
 
   function simulateKeyPress(element, key) {
