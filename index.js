@@ -9,15 +9,34 @@
   }
 
   function simulateKeyPress(element, key) {
-     const inputEvent = new Event('input', {
+    const inputEvent = new Event('input', {
       bubbles: true,
       cancelable: true,
       view: window
     });
 
-    // Append the key to the input element's value
     element.value += key;
     element.dispatchEvent(inputEvent);
+  }
+
+  function simulateKeyDown(keyCode) {
+    const event = new KeyboardEvent('keydown', {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+      keyCode: keyCode
+    });
+    document.dispatchEvent(event);
+  }
+
+  function simulateKeyUp(keyCode) {
+    const event = new KeyboardEvent('keyup', {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+      keyCode: keyCode
+    });
+    document.dispatchEvent(event);
   }
 
   function simulateMouseEnter(element) {
@@ -29,10 +48,41 @@
     element.dispatchEvent(event);
   }
 
-  // Expose the functions to the global object
+  function simulateMouseLeave(element) {
+    const event = new MouseEvent('mouseleave', {
+      bubbles: true,
+      cancelable: true,
+      view: window
+    });
+    element.dispatchEvent(event);
+  }
+
+  function simulateFocus(element) {
+    const event = new FocusEvent('focus', {
+      bubbles: true,
+      cancelable: true,
+      view: window
+    });
+    element.dispatchEvent(event);
+  }
+
+  function simulateChange(element) {
+    const event = new Event('change', {
+      bubbles: true,
+      cancelable: true,
+      view: window
+    });
+    element.dispatchEvent(event);
+  }
+
   global.simulijs = {
     simulateClick,
     simulateKeyPress,
-    simulateMouseEnter
+    simulateKeyDown,
+    simulateKeyUp,
+    simulateMouseEnter,
+    simulateMouseLeave,
+    simulateFocus,
+    simulateChange
   };
 })(window);

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulijs Change Test</title>
+    <script src="../index.js"></script>
+</head>
+<body>
+    <h1>Simulijs Change Test</h1>
+
+    <input type="text" id="changeInput">
+    <div id="changeResult"></div>
+
+    <script>
+        const { simulateChange } = window.simulijs;
+
+        const changeInput = document.getElementById('changeInput');
+        const changeResult = document.getElementById('changeResult');
+
+        changeInput.addEventListener('change', function() {
+            changeResult.textContent = 'Input value changed!';
+            console.log('Input value changed!');
+        });
+
+        window.onload = () => {
+            changeInput.value = 'New value';
+            simulateChange(changeInput);
+        };
+    </script>
+</body>
+</html>
